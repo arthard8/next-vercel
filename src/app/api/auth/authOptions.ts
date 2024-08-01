@@ -5,6 +5,7 @@ import {UserRole} from "@prisma/client";
 import CredentialProvider from "next-auth/providers/credentials";
 import {prisma} from "../../../../prisma/prisma-client";
 import {compare, hashSync} from "bcrypt";
+import toast from "react-hot-toast";
 
 export const authOptions: NextAuthOptions = {
 
@@ -62,6 +63,8 @@ export const authOptions: NextAuthOptions = {
                 }
 
                 if (!findUser.verified) {
+
+                    toast.success('Пожалуйста подтвердите свою почту')
                     return null
                 }
 
